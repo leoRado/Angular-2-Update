@@ -1,0 +1,10 @@
+
+These classes are attached to control (input field) automatically
+from angular.
+______________________________________________________________
+|                            |     Yes       |     No        |
+|----------------------------|---------------|---------------|
+|Control has been visited    |   ng-touched  | ng-untouched  |
+|Control's value has changed |   ng-dirty    | ng-prestine   |
+|Control's value is valid    |   ng-valid    | ng-invalid    |
+--------------------------------------------------------------

@@ -1,9 +1,23 @@
 <div class="container">
     <h2>User Data</h2> 
-    <form #userForm="ngForm" (ngSubmit)="submitUser(userForm.value)">
+    <form #userForm="ngForm" (ngSubmit)="submitUser(userForm.value)" novalidate>
             <div class="form-group">
                 <label>Name</label>
-                <input class="form-control" type="text" name="name" [ngModel]="name" value="">
+                <input class="form-control" 
+                        #inputName="ngModel" 
+                        required minlength="4" maxlength="10"
+                        type="text" name="name" ngModel value="">
+                <div *ngIf="inputName.errors && (inputName.dirty || inputName.touched)">
+                    <div [hidden]="!inputName.errors.required" class="alert alert-danger">
+                        Enter a name
+                    </div>
+                    <div [hidden]="!inputName.errors.minlength" class="alert alert-danger">
+                        Enter atleast 4 characters
+                    </div>
+                    <div [hidden]="!inputName.errors.maxlength" class="alert alert-danger">
+                        Do not exceed 10 characters
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label>Email</label>
@@ -11,19 +25,28 @@
                 <p>{{eMail}}</p>
             </div>
             <div ngModelGroup="address">
-                    <div class="form-group">
-                        <label>Street</label>
-                        <input class="form-control" type="text" name="street" ngModel value="">
+                <div class="form-group">
+                    <label>Street</label>
+                    <input class="form-control" type="text" name="street" ngModel value="">
+                </div>
+                <div class="form-group">
+                    <label>City</label>
+                    <input class="form-control" type="text" name="city" ngModel value="">
+                </div>
+                <div class="form-group">
+                    <label>Postalcode</label>
+                    <input class="form-control" 
+                        #inputPostalCode="ngModel"
+                        pattern="^[1-9][0-9]{4}"
+                        type="text" name="postalCode" ngModel value="">
+                    
+                    <div *ngIf="inputPostalCode.errors && (inputPostalCode.dirty || inputPostalCode.touched)">
+                            <div [hidden]="!inputPostalCode.errors.pattern" class="alert alert-danger">
+                                Enter a valid postal code (4 numbers)
+                            </div>
                     </div>
-                    <div class="form-group">
-                        <label>City</label>
-                        <input class="form-control" type="text" name="city" ngModel value="">
-                    </div>
-                    <div class="form-group">
-                        <label>Postalcode</label>
-                        <input class="form-control" type="text" name="postalCode" ngModel value="">
-                    </div>
+                </div>
             </div>
-            <button class="btn btn-primary" type="submit">Submit</button>
+            <button [disabled]="!userForm.form.valid" class="btn btn-primary" type="submit">Submit</button>
     </form>
 </div>
