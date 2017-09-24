@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
-  template: `<h1>Hello World</h1>
-  <sub-app></sub-app>
-  `
+  templateUrl: 'app/app.component.html'
 })
-export class AppComponent { }
+export class AppComponent {
+  public name: string = "Leonhard";
+  submitUser(value: any) {
+    console.log(value);
+  }
+ }
