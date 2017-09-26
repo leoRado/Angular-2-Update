@@ -3,12 +3,16 @@ import { RouterModule, Routes }         from '@angular/router';
 
 import { EmployeeComponent }            from './31.employee.component';
 import { DepartmentListComponent }      from './31.department.component';
-import { DepartmentDetailComponent }      from './31.department.detail.component';
+import { DepartmentDetailComponent }    from './31.department.detail.component';
+import { HomeComponent }                from './31.home.component';
+import { PageNotFoundComponent }        from './31.page.not.found.component';
 
 const routes: Routes = [
+    { path: '', component: HomeComponent },
     { path: 'departments', component: DepartmentListComponent },
     { path: 'employees', component: EmployeeComponent },
-    { path: 'departments/:id', component: DepartmentDetailComponent }
+    { path: 'departments/:id', component: DepartmentDetailComponent },
+    { path: '**', component: PageNotFoundComponent }
 ]
 
 @NgModule({
@@ -19,4 +23,10 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routingComponents = [ DepartmentListComponent, EmployeeComponent, DepartmentDetailComponent ];
+export const routingComponents = [ 
+    DepartmentListComponent, 
+    EmployeeComponent, 
+    DepartmentDetailComponent, 
+    HomeComponent,
+    PageNotFoundComponent 
+];
