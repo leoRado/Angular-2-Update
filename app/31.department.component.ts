@@ -1,6 +1,6 @@
 
-import { Component, OnInit }            from '@angular/core';
-import { Router, ActivatedRoute, Params }               from '@angular/router';
+import { Component, OnInit }                    from '@angular/core';
+import { Router, ActivatedRoute, Params }       from '@angular/router';
 
 @Component({
     selector: 'departments',
@@ -37,7 +37,8 @@ export class DepartmentListComponent implements OnInit {
     }
 
     departmentClicked(department) {
-        this.router.navigate(['/departments', department.id]);
+        // this.router.navigate(['/departments', department.id]);
+        this.router.navigate([department.id], { relativeTo: this._route });
     }
 
     isDepartmentSelected(department) {

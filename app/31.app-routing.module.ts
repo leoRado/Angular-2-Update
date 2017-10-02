@@ -8,11 +8,11 @@ import { HomeComponent }                from './31.home.component';
 import { PageNotFoundComponent }        from './31.page.not.found.component';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
-    { path: 'departments', component: DepartmentListComponent },
-    { path: 'employees', component: EmployeeComponent },
-    { path: 'departments/:id', component: DepartmentDetailComponent },
-    { path: '**', component: PageNotFoundComponent }
+    { path: '',                     redirectTo: '/departments', pathMatch: 'full' }, // pathMatch: [ full | prefix ]
+    { path: 'departments',          component: DepartmentListComponent },
+    { path: 'employees',            component: EmployeeComponent },
+    { path: 'departments/:id',      component: DepartmentDetailComponent },
+    { path: '**',                   component: PageNotFoundComponent }
 ]
 
 @NgModule({
